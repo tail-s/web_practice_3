@@ -1,31 +1,15 @@
-# 기반이 될 이미지 선택 (Ubuntu 이미지 사용)
-FROM ubuntu:latest
+# 도커 이미지의 기본 이미지로 젠킨스에서 등록한 JDK를 사용합니다.
+FROM jdk-17
 
-# JDK 경로 설정 (Jenkins의 tools에서 설정한 경로 사용)
-ENV JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
-ENV PATH=$PATH:$JAVA_HOME/bin
-
-# 작업 디렉토리 생성
+# 작업 디렉토리를 /app으로 설정합니다.
 WORKDIR /app
 
-# Gradle Wrapper 파일을 먼저 복사하여 Gradle 설치 및 캐시 사용
-COPY jes/gradlew ./
-COPY jes/gradle ./gradle
-RUN chmod +x ./gradlew
-RUN ./gradlew --version
+# 호스트의 Backend/jes 디렉토리에 있는 모든 파일을 컨테이너의 /app 디렉토리로 복사합니다.
+# Gradle 빌드로 생성된 JAR 파일을 포함시킵니다.
+COPY Backend/jes /app
 
-# 백엔드 프로젝트 의존성을 먼저 복사하여 캐시 사용
-COPY jes/build.gradle jes/settings.gradle ./
-RUN ./gradlew resolveDependencies
+# JAR 파일 이름을 여기에 입력해주세요 (예: jes.jar)
+ENV JAR_FILE_NAME=<JAR 파일 이름>
 
-# 소스 코드 복사
-COPY jes/src ./src
-
-# 빌드
-RUN ./gradlew clean build
-
-# 빌드된 JAR 파일을 컨테이너로 복사
-COPY jes/build/libs/jes.jar ./app.jar
-
-# 컨테이너 실행 시 실행될 명령어 설정
-CMD ["java", "-jar", "app.jar"]
+# 도커 컨테이너가 실행될 때 실행될 명령어를 지정합니다.
+CMD ["java", "-jar", "${JAR_FILE_NAME}"]
