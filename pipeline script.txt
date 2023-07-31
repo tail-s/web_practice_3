@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    
+    tools {
+        nodejs 'nodejs-18.16.0'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/tail-s/web_practice_3.git'
+            }
+        }
+
+        stage('Frontend Build') {
+            steps {
+                dir('Frontend/jes') {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
+            }
+        }
+
+        stage('Docker Build and Deploy') {
+            environment {
+                IMAGE_NAME = 'frontend'
+                CONTAINER_NAME = 'frontend-container'
+            }
+            steps {
+                // 이전 컨테이너 중지 및 삭제
+                sh "sudo docker stop frontend-container || true"
+                sh "sudo docker rm frontend-container || true"
+
+                // 이미지 빌드
+                script {
+                    def buildOutput = sh script: "sudo docker build -t frontend ./Frontend/jes", returnStatus: true
+                    if (buildOutput == 0) {
+                        // 빌드가 성공한 경우에만 <none> 태그를 가진 이미지 삭제
+                        sh "sudo docker images | grep '<none>' | awk '{print \$3}' | xargs -r sudo docker rmi || true"
+                    } else {
+                        error "Docker build failed!"
+                    }
+                }
+
+                // 새로운 컨테이너 시작
+                sh "sudo docker run -d -p 3000:3000 --name frontend-container frontend"
+            }
+        }
+    }
+}
