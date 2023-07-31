@@ -24,7 +24,7 @@ COPY Backend/src ./src
 # 빌드
 RUN ./gradlew clean build
 
-# 빌드된 JAR 파일을 컨테이너로 복사 (your-application.jar에서 jes.jar로 수정)
+# 빌드된 JAR 파일을 컨테이너로 복사
 COPY Backend/build/libs/jes.jar ./app.jar
 
 # 컨테이너 실행 시 실행될 명령어 설정
