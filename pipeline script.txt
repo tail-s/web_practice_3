@@ -3,12 +3,22 @@ pipeline {
     
     tools {
         nodejs 'nodejs-18.16.0'
+        jdk 'jdk-17'
+        gradle 'gradle-8.0'
     }
 
     stages {
         stage('Checkout') {
             steps {
                 git branch: 'master', url: 'https://github.com/tail-s/web_practice_3.git'
+            }
+        }
+        
+        stage('Backend Build') {
+            steps {
+                dir('Backend/jes') {
+                    sh 'gradle clean build'
+                }
             }
         }
 
@@ -20,8 +30,32 @@ pipeline {
                 }
             }
         }
+        
+        stage('Docker Build and Deploy Backend') {
+            environment {
+                IMAGE_NAME = 'backend'
+                CONTAINER_NAME = 'backend-container'
+            }
+            steps {
+                // 이전 컨테이너 중지 및 삭제
+                sh "sudo docker stop backend-container || true"
+                sh "sudo docker rm backend-container || true"
 
-        stage('Docker Build and Deploy') {
+                script {
+                    def buildOutput = sh script: "sudo docker build -t backend ./Backend/jes", returnStatus: true
+                    if (buildOutput == 0) {
+                        // 빌드가 성공한 경우에만 <none> 태그를 가진 이미지 삭제
+                        sh "sudo docker images | grep '<none>' | awk '{print \$3}' | xargs -r sudo docker rmi || true"
+                    } else {
+                        error "Docker build failed!"
+                    }
+                }
+                // 새로운 컨테이너 시작
+                sh "sudo docker run -d -p 9090:9090 --name backend-container backend"
+            }
+        }
+
+        stage('Docker Build and Deploy Frontend') {
             environment {
                 IMAGE_NAME = 'frontend'
                 CONTAINER_NAME = 'frontend-container'
