@@ -1,0 +1,31 @@
+server:
+  port: 9090
+
+spring:
+  datasource:
+    url: jdbc:mysql://sojin.ddns.net:9906/JES  # MySQL 연결 정보
+#    url: jdbc:mysql://localhost:3306/JES  # MySQL 연결 정보
+    username: your_mysql_username  # MySQL 사용자 이름
+    password: your_mysql_password  # MySQL 사용자 비밀번호
+    driver-class-name: com.mysql.cj.jdbc.Driver  # MySQL 드라이버 클래스
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect  # MySQL에 맞는 Hibernate Dialect
+    hibernate:
+      ddl-auto: create  # 테이블 자동 생성 옵션 (create, update 등)
+    properties:
+      hibernate:
+        # show_sql: true  # SQL 쿼리 출력 여부 (선택적 사용 가능)
+        format_sql: true  # SQL 쿼리를 보기 쉽게 포맷팅
+        use_sql_comments: true  # SQL 쿼리에 주석 추가
+
+#  redis:
+#    uri: redis://localhost:6379
+
+#    host: localhost
+#    port: 6379
+    # password: your_redis_password  # Redis 비밀번호 (선택적 사용)
+
+logging.level:
+  org.hibernate.SQL: debug  # Hibernate SQL 로깅 레벨 설정
+# org.hibernate.type: trace  # Hibernate type 로깅 레벨 설정
