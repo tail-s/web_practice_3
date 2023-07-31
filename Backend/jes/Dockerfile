@@ -1,5 +1,9 @@
-# 도커 이미지의 기본 이미지로 젠킨스에서 등록한 JDK를 사용합니다.
-FROM jdk-17
+# 기반이 될 이미지 선택 (Ubuntu 이미지 사용)
+FROM ubuntu:latest
+
+# JDK 경로 설정 (Jenkins의 tools에서 설정한 경로 사용)
+ENV JAVA_HOME=/usr/lib/jvm/java-1.17.0-openjdk-amd64
+ENV PATH=$PATH:$JAVA_HOME/bin
 
 # 작업 디렉토리를 /app으로 설정합니다.
 WORKDIR /app
