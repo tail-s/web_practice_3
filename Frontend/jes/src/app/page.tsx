@@ -6,7 +6,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          Final Test ( Auto Image Delete )
+          하하하하하하
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
         </p>
