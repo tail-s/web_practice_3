@@ -6,8 +6,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          하하하하하하
-          Get started by editing&nbsp;
+          프로젝트 시작이당&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
         </p>
         <div>
