@@ -5,8 +5,8 @@ spring:
   datasource:
     url: jdbc:mysql://sojin.ddns.net:9906/JES  # MySQL 연결 정보
 #    url: jdbc:mysql://localhost:3306/JES  # MySQL 연결 정보
-    username: your_mysql_username  # MySQL 사용자 이름
-    password: your_mysql_password  # MySQL 사용자 비밀번호
+    username: root  # MySQL 사용자 이름
+    password: root  # MySQL 사용자 비밀번호
     driver-class-name: com.mysql.cj.jdbc.Driver  # MySQL 드라이버 클래스
 
   jpa:
