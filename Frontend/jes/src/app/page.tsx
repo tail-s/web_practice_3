@@ -6,6 +6,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
+          빌드테스트애용!
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
         </p>
