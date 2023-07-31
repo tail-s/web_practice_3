@@ -6,7 +6,7 @@ export default function Home() {
     <main className={styles.main}>
       <div className={styles.description}>
         <p>
-          빌드테스트애용! 음 CI/CD는 잘 되는군?
+          Final Test ( Auto Image Delete )
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
         </p>
