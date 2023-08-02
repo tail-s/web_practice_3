@@ -13,7 +13,7 @@ public class HelloController {
 
     @GetMapping
     public ResponseEntity<String> hello() {
-        log.info("Hello Controller Passed");
+//        log.info("Hello Controller Passed");
         return ResponseEntity.ok().body("안녕 반가워");
     }
 }
