@@ -29,3 +29,18 @@ spring:
 logging.level:
   org.hibernate.SQL: debug  # Hibernate SQL 로깅 레벨 설정
 # org.hibernate.type: trace  # Hibernate type 로깅 레벨 설정
+
+status: WARN
+
+appenders:
+  Console:
+    name: Console
+    target: SYSTEM_OUT
+    PatternLayout:
+      pattern: "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"
+
+loggers:
+  root:
+    level: INFO
+    AppenderRef:
+      - ref: Console
