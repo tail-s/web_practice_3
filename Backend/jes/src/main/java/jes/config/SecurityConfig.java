@@ -24,7 +24,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
-    private final String[] allowedUrls = { "/login" };
+    private final String[] allowedUrls = { "/login", "/github-webhook/" };
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final TokenProvider tokenProvider;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
