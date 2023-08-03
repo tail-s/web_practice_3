@@ -19,6 +19,9 @@ spring:
         format_sql: true  # SQL 쿼리를 보기 쉽게 포맷팅
         use_sql_comments: true  # SQL 쿼리에 주석 추가
 
+cors:
+  allowedOrigins: http://localhost:3000, http://sojin.ddns.net:3000
+
 #  redis:
 #    uri: redis://localhost:6379
 
@@ -26,10 +29,11 @@ spring:
 #    port: 6379
     # password: your_redis_password  # Redis 비밀번호 (선택적 사용)
 
-cors:
-  allowedOrigins:
-    - http://localhost:3000
-    - http://sojin.ddns.net:3000
+
+
+jwt:
+  secret: gottachangemyansweringmachinenowthatimalonecuzrightnowitsaysthatwecantcometothephone
+  token-validity-in-seconds: 3600
 
 
 logging.level:
