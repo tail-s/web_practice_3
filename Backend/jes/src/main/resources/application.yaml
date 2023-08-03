@@ -26,6 +26,12 @@ spring:
 #    port: 6379
     # password: your_redis_password  # Redis 비밀번호 (선택적 사용)
 
+cors:
+  allowedOrigins:
+    - http://localhost:3000
+    - http://sojin.ddns.net:3000
+
+
 logging.level:
   org.hibernate.SQL: debug  # Hibernate SQL 로깅 레벨 설정
 # org.hibernate.type: trace  # Hibernate type 로깅 레벨 설정
