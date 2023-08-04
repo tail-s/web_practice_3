@@ -118,20 +118,20 @@ pipeline {
             }
             steps {
                 // 이전 컨테이너 중지 및 삭제
-                sh "sudo docker stop backend-container || true"
-                sh "sudo docker rm backend-container || true"
+                sh "docker stop backend-container || true"
+                sh "docker rm backend-container || true"
 
                 script {
-                    def buildOutput = sh script: "sudo docker build -t backend ./Backend/jes", returnStatus: true
+                    def buildOutput = sh script: "docker build -t backend ./Backend/jes", returnStatus: true
                     if (buildOutput == 0) {
                         // 빌드가 성공한 경우에만 <none> 태그를 가진 이미지 삭제
-                        sh "sudo docker images | grep '<none>' | awk '{print \$3}' | xargs -r sudo docker rmi || true"
+                        sh "docker images | grep '<none>' | awk '{print \$3}' | xargs -r docker rmi || true"
                     } else {
                         error "Docker build failed!"
                     }
                 }
                 // 새로운 컨테이너 시작
-                sh "sudo docker run -d -p 9090:9090 --name backend-container backend"
+                sh "docker run -d -p 8080:8080 --name backend-container backend"
             }
         }
 
@@ -142,22 +142,36 @@ pipeline {
             }
             steps {
                 // 이전 컨테이너 중지 및 삭제
-                sh "sudo docker stop frontend-container || true"
-                sh "sudo docker rm frontend-container || true"
+                sh "docker stop frontend-container || true"
+                sh "docker rm frontend-container || true"
 
                 // 이미지 빌드
                 script {
-                    def buildOutput = sh script: "sudo docker build -t frontend ./Frontend/jes", returnStatus: true
+                    def buildOutput = sh script: "docker build -t frontend ./Frontend/jes", returnStatus: true
                     if (buildOutput == 0) {
                         // 빌드가 성공한 경우에만 <none> 태그를 가진 이미지 삭제
-                        sh "sudo docker images | grep '<none>' | awk '{print \$3}' | xargs -r sudo docker rmi || true"
+                        sh "docker images | grep '<none>' | awk '{print \$3}' | xargs -r docker rmi || true"
                     } else {
                         error "Docker build failed!"
                     }
                 }
 
                 // 새로운 컨테이너 시작
-                sh "sudo docker run -d -p 3000:3000 --name frontend-container frontend"
+                sh "docker run -d -p 3000:3000 --name frontend-container frontend"
+            }
+        }
+        
+        stage('Start MySQL Container') {
+            environment {
+                MYSQL_DATABASE = 'JES'
+                MYSQL_USER = 'root'
+                MYSQL_PASSWORD = 'root'
+                MYSQL_ROOT_PASSWORD = 'root'
+            }
+            steps {
+                sh "docker stop mysql-container || true"
+                sh "docker rm mysql-container || true"
+                sh "docker run -d -p 3306:3306 --name mysql-container -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -e MYSQL_DATABASE=${MYSQL_DATABASE} -e MYSQL_USER=${MYSQL_USER} -e MYSQL_PASSWORD=${MYSQL_PASSWORD} mysql:8.0.26"
             }
         }
     }
@@ -172,5 +186,10 @@ Content type : appliation/json
 세팅 후 Add webhook
 
 첫 빌드는 수동 빌드해야 함
+
+가상화 서버로 포워딩 때문에 80번 포트를 비워둘 수가 없기 때문에 HTTP 기반의 웹 서버가 아닌 DNS 레코드로 인증 시도
+
+sudo certbot certonly --manual -d sojin.ddns.net --preferred-challenges dns
+
 
 
