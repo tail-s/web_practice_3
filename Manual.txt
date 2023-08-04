@@ -1,3 +1,80 @@
+Manual written by Sojin 2023.08.04 22:00
+----------
+
+sudo apt install net-tools
+
+ifconfig (ens32 확인)
+[VMware Edit > Virdual Network Editor] (DHCP Setting에서 starting ip 확인, NAT Setting에서 gateway ip 확인)
+
+sudo vi /etc/netplan/01-netconfig.yaml
+
+아래 내용 작성
+'''
+network:
+  version: 2
+  renderer: NetworkManager # 또는 'systemd-networkd'로 설정할 수 있습니다.
+  ethernets:
+    ens32:	
+      addresses:
+        - starting ip/24
+      gateway4: gateway ip
+      nameservers:
+        addresses:
+          - [8.8.8.8, 8.8.4.4]
+'''
+
+sudo netplan apply
+
+[VMware NAT Setting 포워딩, 공유기 포워딩, 인바운드 규칙 설정]  -> SSH 클라이언트 활용 가능
+
+ex) SSH : 외부IP:10022 > 내부IP:10022 > 우분투고정IP:22
+
+sudo apt update
+
+아래 주소를 참고하여 Docker 설치
+https://docs.docker.com/engine/install/ubuntu/
+
+sudo apt update
+sudo apt install nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+sudo apt update
+sudo apt install -y openjdk-17-jdk
+sudo update-java-alternatives -s java-1.17.0-openjdk-amd64
+
+아래 주소를 참고하여 jenkins 설치
+https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
+
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+
+sudo usermod -aG sudo jenkins
+sudo systemctl restart jenkins
+
+sudo vi /etc/default/jenkins (포트 변경을 했으나 적용이 안됨)
+->
+sudo vi /usr/lib/systemd/system/jenkins.service (포트변경 후 아래 절차 진행)
+sudo systemctl daemon-reload
+sudo systemctl start jenkins.service
+sudo systemctl restart jenkins
+
+필요한 젠킨스 플러그인을 설치
+ex) Webhook Trigger, NodeJS
+
+Jenkins 관리 > Tools > NodeJS, Gradle, JDK
+
+NodeJS :
+Name, Version 확인 후 Install automatically 체크 (Name 값은 추후 pipeline script의 tools 블럭의 값과 일치시켜주어야 함)
+
+Gradle : 
+name, version 확인 후 Install automatically 체크 (프로젝트 내에서 gradle/wrapper 경로에 들어가서 gradle-wrapper.properties -> Gradle 버전 확인 가능)
+
+JDK : 
+Name, JAVA_HOME 확인 ( sudo update-java-alternatives --list 를 통해 JAVA_HOME의 경로를 확인할 수 있음)
+
+젠킨스 새 아이템(pipeline) 생성 후 GitHub hook trigger for GITScm polling 체크, 스크립트에 아래 코드 작성
+'''
 pipeline {
     agent any
     
@@ -82,3 +159,13 @@ pipeline {
         }
     }
 }
+'''
+
+Github repository > Settings > Webhooks > Add webhook
+
+Payload URL : http://sojin.ddns.net:19090/github-webhook/
+Content type : appliation/json
+
+세팅 후 Add webhook
+
+
