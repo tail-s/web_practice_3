@@ -49,14 +49,14 @@ https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
 sudo systemctl start jenkins
 sudo systemctl enable jenkins
 
-sudo usermod -aG sudo jenkins
-sudo systemctl restart jenkins
-
 sudo vi /etc/default/jenkins (포트 변경을 했으나 적용이 안됨)
 ->
 sudo vi /usr/lib/systemd/system/jenkins.service (포트변경 후 아래 절차 진행)
 sudo systemctl daemon-reload
 sudo systemctl start jenkins.service
+sudo systemctl restart jenkins
+
+sudo usermod -aG sudo jenkins
 sudo systemctl restart jenkins
 
 필요한 젠킨스 플러그인을 설치
