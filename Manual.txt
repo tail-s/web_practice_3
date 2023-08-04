@@ -161,17 +161,16 @@ pipeline {
             }
         }
         
-        stage('Start MySQL Container') {
+        stage('Docker Build and Deploy MySQL') {
             environment {
-                MYSQL_DATABASE = 'JES'
-                MYSQL_USER = 'root'
-                MYSQL_PASSWORD = 'root'
                 MYSQL_ROOT_PASSWORD = 'root'
             }
             steps {
                 sh "docker stop mysql-container || true"
                 sh "docker rm mysql-container || true"
-                sh "docker run -d -p 3306:3306 --name mysql-container -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} -e MYSQL_DATABASE=${MYSQL_DATABASE} -e MYSQL_USER=${MYSQL_USER} -e MYSQL_PASSWORD=${MYSQL_PASSWORD} mysql:8.0.26"
+                sh "docker run -d -p 3306:3306 -e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} --name mysql-container mysql:8.0.26"
+                sleep 15
+                sh "docker exec -i mysql-container mysql -uroot -p${MYSQL_ROOT_PASSWORD} -e 'CREATE DATABASE JES;'"
             }
         }
     }
