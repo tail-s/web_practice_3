@@ -21,7 +21,7 @@ spring:
         use_sql_comments: true  # SQL 쿼리에 주석 추가
 
 cors:
-  allowedOrigins: http://localhost:3000, http://sojin.ddns.net:3000
+  allowedOrigins: http://localhost:3000, http://sojin.ddns.net:13000
 
 #  redis:
 #    uri: redis://localhost:6379
