@@ -56,8 +56,11 @@ sudo systemctl daemon-reload
 sudo systemctl start jenkins.service
 sudo systemctl restart jenkins
 
-sudo usermod -aG sudo jenkins
+sudo usermod -aG sudo jenkins (기존에는 잘 되었으나 이번에는 설정이 안됨)
 sudo systemctl restart jenkins
+->
+sudo chmod 666 /var/run/docker.sock
+(/var/run/docker.sock 파일의 권한을 666으로 변경해서 그룹 내 다른 사용자도 접근 가능하게 변경하여 해결)
 
 필요한 젠킨스 플러그인을 설치
 ex) Webhook Trigger, NodeJS
@@ -167,5 +170,7 @@ Payload URL : http://sojin.ddns.net:19090/github-webhook/
 Content type : appliation/json
 
 세팅 후 Add webhook
+
+첫 빌드는 수동 빌드해야 함
 
 
