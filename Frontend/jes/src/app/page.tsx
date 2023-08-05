@@ -19,7 +19,7 @@ export default function Home() {
           >
             By{' '}
             <Image
-              src="/chobab.jpg"
+              src="/vercel.svg"
               alt="Vercel Logo"
               className={styles.vercelLogo}
               width={300}
