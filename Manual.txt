@@ -207,7 +207,6 @@ server {
         server_name sojin.ddns.net;
 
         location / {
-                #proxy_pass http://sojin.ddns.net:13000;
                 proxy_pass http://localhost:3000;
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
@@ -216,7 +215,6 @@ server {
 
         location /api {
                 proxy_pass http://localhost:8080;
-                #proxy_pass http://sojin.ddns.net:8080;
                 proxy_set_header Host $host;
         }
 
