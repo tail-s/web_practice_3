@@ -190,5 +190,42 @@ Content type : appliation/json
 
 sudo certbot certonly --manual -d sojin.ddns.net --preferred-challenges dns
 
+Next.JS 기반 Frontend 프로젝트의 next.config.js에 다음 내용 추가
+'''
+const isProd = process.env.NODE_ENV === 'production';
+
+module.exports = {
+    assetPrefix: isProd ? 'http://sojin.ddns.net:13000' : '',
+};
+'''
+이후
+sudo vi /etc/nginx/sites-available/default
+에서 다음 내용으로 수정
+'''
+server {
+        listen 80;
+        server_name sojin.ddns.net;
+
+        location / {
+                #proxy_pass http://sojin.ddns.net:13000;
+                proxy_pass http://localhost:3000;
+                proxy_set_header Host $host;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        location /api {
+                proxy_pass http://localhost:8080;
+                #proxy_pass http://sojin.ddns.net:8080;
+                proxy_set_header Host $host;
+        }
+
+        location ~* \.(?:css|js|png|jpg|jpeg|gif|ico|woff|woff2|ttf|otf|svg)$ {
+                alias /var/www/html;
+        }
+}
+'''
+
+했으나, 폰트 관련 CORS 오류 및 다른 네트워크에서 80포트 메인페이지 접속이 안되는 부분 해결 중
 
 
