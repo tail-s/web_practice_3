@@ -179,7 +179,7 @@ pipeline {
 
 Github repository > Settings > Webhooks > Add webhook
 
-Payload URL : http://jes.ddns.net:19090/github-webhook/
+Payload URL : http://[외부IP]:19090/github-webhook/
 Content type : appliation/json
 
 세팅 후 Add webhook
@@ -195,7 +195,7 @@ Next.JS 기반 Frontend 프로젝트의 next.config.js에 다음 내용 추가
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    assetPrefix: isProd ? 'http://jes.ddns.net:13000' : '',
+    assetPrefix: isProd ? 'http://[외부IP]:13000' : '',
 };
 '''
 이후
@@ -207,15 +207,15 @@ server {
         server_name jes.ddns.net;
 
         location / {
-                proxy_pass http://localhost:3000;
                 proxy_set_header Host $host;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_pass http://localhost:3000;
         }
 
         location /api {
-                proxy_pass http://localhost:8080;
                 proxy_set_header Host $host;
+                proxy_pass http://localhost:8080;
         }
 
         location ~* \.(?:css|js|png|jpg|jpeg|gif|ico|woff|woff2|ttf|otf|svg)$ {
@@ -225,5 +225,7 @@ server {
 '''
 
 했으나, 폰트 관련 CORS 오류 및 다른 네트워크에서 80포트 메인페이지 접속이 안되는 부분 해결 중
+NGINX 오류로 예상, 우선 NGINX 삭제 후 DNS 서비스에서 프론트 컨테이너로 리타이렉트 해주는 기능을 사용하면서,
+API는 IP주소를 직접 사용하는 방식으로 개발 진행 결정... 추후 보완 예정
 
 
