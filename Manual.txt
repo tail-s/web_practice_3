@@ -179,7 +179,7 @@ pipeline {
 
 Github repository > Settings > Webhooks > Add webhook
 
-Payload URL : http://sojin.ddns.net:19090/github-webhook/
+Payload URL : http://jes.ddns.net:19090/github-webhook/
 Content type : appliation/json
 
 세팅 후 Add webhook
@@ -195,7 +195,7 @@ Next.JS 기반 Frontend 프로젝트의 next.config.js에 다음 내용 추가
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    assetPrefix: isProd ? 'http://sojin.ddns.net:13000' : '',
+    assetPrefix: isProd ? 'http://jes.ddns.net:13000' : '',
 };
 '''
 이후
@@ -204,7 +204,7 @@ sudo vi /etc/nginx/sites-available/default
 '''
 server {
         listen 80;
-        server_name sojin.ddns.net;
+        server_name jes.ddns.net;
 
         location / {
                 proxy_pass http://localhost:3000;
