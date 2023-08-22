@@ -6,8 +6,8 @@ server:
 spring:
   datasource:
 #    allowPublicKeyRetrieval=true&useSSL=false&
-    url: jdbc:mysql-container://3306/JES?useUniCode=yes&characterEncoding=utf8&serverTimezone=Asia/Seoul
-#    url: jdbc:mysql://jes.ddns.net:13306/JES  # MySQL 연결 정보
+#    url: jdbc:mysql-container://3306/JES?useUniCode=yes&characterEncoding=utf8&serverTimezone=Asia/Seoul 컨테이너 이름은 동적으로 생성되거나 변경될 수 있기에 권장되지 않음
+    url: jdbc:mysql://jes.ddns.net:13306/JES  # MySQL 연결 정보
 #    url: jdbc:mysql://localhost:3306/JES  # MySQL 연결 정보
     username: root  # MySQL 사용자 이름
     password: root  # MySQL 사용자 비밀번호
