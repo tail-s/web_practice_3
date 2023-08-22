@@ -229,3 +229,39 @@ NGINX 오류로 예상, 우선 NGINX 삭제 후 DNS 서비스에서 프론트 �
 API는 IP주소를 직접 사용하는 방식으로 개발 진행 결정... 추후 보완 예정
 
 
+
+
+-----
+
+민감한 정보 Jenkins pipeline script에 환경변수로 설정 :
+
+pipeline {
+    agent any
+    environment {
+        API_KEY = credentials('your-api-key-credential-id')
+        API_URL = 'https://api.example.com'
+	FRONT_URL = 'http://jes.ddns.net:13000'
+    }
+    stages {
+        // 중략
+    }
+}
+
+위 내용과 같이 environment 블럭을 추가한 후
+프로젝트에서 
+
+`${process.env.FRONT_URL}`
+
+로 호출
+
+로컬환경 테스트 시 루트 디렉토리에 .env.local 파일을 생성하여 호출
+ex) 
+[ .env.local 파일 ]
+F_URL = http://jes.ddns.net:13000
+
+[ 호출할 부분 ]
+const furl = process.env.F_URL
+
+{furl}
+
+-----
