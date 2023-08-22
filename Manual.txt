@@ -192,11 +192,16 @@ sudo certbot certonly --manual -d sojin.ddns.net --preferred-challenges dns
 
 Next.JS 기반 Frontend 프로젝트의 next.config.js에 다음 내용 추가
 '''
+/** @type {import('next').NextConfig} */
+const nextConfig = {}
+
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
     assetPrefix: isProd ? 'http://[외부IP]:13000' : '',
 };
+
+module.exports = nextConfig
 '''
 이후
 sudo vi /etc/nginx/sites-available/default
