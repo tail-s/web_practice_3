@@ -7,7 +7,7 @@ spring:
   datasource:
 #    allowPublicKeyRetrieval=true&useSSL=false&
     url: jdbc:mysql-container://3306/JES?useUniCode=yes&characterEncoding=utf8&serverTimezone=Asia/Seoul
-#    url: jdbc:mysql://sojin.ddns.net:13306/JES  # MySQL 연결 정보
+#    url: jdbc:mysql://jes.ddns.net:13306/JES  # MySQL 연결 정보
 #    url: jdbc:mysql://localhost:3306/JES  # MySQL 연결 정보
     username: root  # MySQL 사용자 이름
     password: root  # MySQL 사용자 비밀번호
@@ -24,7 +24,7 @@ spring:
         use_sql_comments: true  # SQL 쿼리에 주석 추가
 
 cors:
-  allowedOrigins: http://localhost:3000, http://sojin.ddns.net:13000
+  allowedOrigins: http://localhost:3000, http://jes.ddns.net:13000
 
 #  redis:
 #    uri: redis://localhost:6379
