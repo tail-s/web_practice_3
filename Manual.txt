@@ -39,6 +39,33 @@ sudo apt install nginx
 sudo systemctl start nginx
 sudo systemctl enable nginx
 
+*----------------
+nginx 방화벽 설정
+
+sudo ufw app list
+위 명령을 실항하면 아래와 같은 리스트가 출력됨
+'''
+Available applications:
+	Nginx Full
+	Nginx HTTP
+	Nginx HTTPS
+	OpenSSH
+'''
+Nginx Full : 포트 80번만 허용
+Nginx HTTP : 포트 443번만 허용
+Nginx HTTPS : 포트 80, 443번 허용
+OpenSSH
+
+sudo ufw allow 'Nginx HTTP'
+위 명령어로 적용
+
+sudo ufw status : 상태 확인
+
+sudo ufw enable : 활성화
+
+*----------------
+
+
 sudo apt update
 sudo apt install -y openjdk-17-jdk
 sudo update-java-alternatives -s java-1.17.0-openjdk-amd64

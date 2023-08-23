@@ -38,8 +38,9 @@ public class SecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFil
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .httpBasic(httpBasic -> httpBasic.disable())
-                .formLogin(formLogin -> formLogin.disable())
+//                .httpBasic(httpBasic -> httpBasic.disable())
+//                .formLogin(formLogin -> formLogin.disable())
+                .httpBasic(Customizer.withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(sessionManagement -> sessionManagement.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(request -> request
