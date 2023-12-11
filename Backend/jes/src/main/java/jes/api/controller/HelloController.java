@@ -14,6 +14,6 @@ public class HelloController {
     @GetMapping
     public ResponseEntity<String> hello() {
         log.info("Hello Controller Passed");
-        return ResponseEntity.ok().body("안녕 반가워");
+        return ResponseEntity.ok().body("히히 이제 시작이야...");
     }
 }
