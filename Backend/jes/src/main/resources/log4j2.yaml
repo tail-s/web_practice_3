@@ -1,0 +1,51 @@
+Configutation:
+  name: Default
+  status: warn
+
+#  해당 파일에서 사용할 수 있는 공통 변수를 정의합니다. name, log layout pattern 등을 정의하는 것이 추후 관리에 편합니다.
+  Properties:
+    Property:
+      - name: "log-path"
+        value: "./logs"
+      - name: "pattern"
+        value: "%highlight{[%-5level]} %d{yyyy-MM-dd HH:mm:ss.SSS} [%t][%F] %c{1} - %msg%n"
+      - name: "charset-UTF-8"
+        value: "UTF-8"
+#  로그의 패턴과 저장 패턴 등을 설정할 수 있습니다.
+  Appenders:
+    Console:
+      name: Console_Appender
+      target: SYSTEM_OUT
+      PatternLayout:
+        charset: ${charset-UTF-8}
+        pattern: ${pattern}
+        disableAnsi: false
+    RollingFile:
+      name: RollingFile_Appender
+      fileName: ${log-path}/rollingfile.log
+      filePattern: "logs/archive/rollingfile.log.%d{yyyy-MM-dd-hh-mm}_%i.gz"
+      PatternLayout:
+        charset: ${charset-UTF-8}
+        pattern: ${pattern}
+      Policies:
+        SizeBasedTriggeringPolicy:
+          size: "200KB"
+        TimeBasedTriggeringPolicy:
+          interval: "1"
+      DefaultRollOverStrategy:
+        max: "30"
+        fileIndex: "max"
+#  출력하는 로그 범위를 지정할 수 있습니다. 설정에 따라 로그를 노출시키거나 생략할 수 있습니다.
+  Loggers:
+    Root:
+      level: debug
+      AppenderRef:
+        - ref: Console_Appender
+        - ref: RollingFile_Appender
+    Logger:
+      name: example.demospringboot
+      additivity: false
+      level: debug
+      AppenderRef:
+        - ref: Console_Appender
+        - ref: RollingFile_Appender

@@ -17,6 +17,7 @@ import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
+import java.util.logging.LogManager;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,7 @@ import java.util.stream.Collectors;
 @Component
 public class TokenProvider implements InitializingBean {
 
+    public static final Logger log = LogManager.getLogManager().getLogger();
     private static final String AUTHORITIES_KEY = "auth";
     private final String secret;
     private final long tokenValidityInMilliseconds;

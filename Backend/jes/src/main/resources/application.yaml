@@ -34,27 +34,12 @@ cors:
     # password: your_redis_password  # Redis 비밀번호 (선택적 사용)
 
 
-
 jwt:
   secret: gottachangemyansweringmachinenowthatimalonecuzrightnowitsaysthatwecantcometothephone
   token-validity-in-seconds: 3600
 
-
-logging.level:
-  org.hibernate.SQL: debug  # Hibernate SQL 로깅 레벨 설정
-# org.hibernate.type: trace  # Hibernate type 로깅 레벨 설정
-
-status: WARN
-
-appenders:
-  Console:
-    name: Console
-    target: SYSTEM_OUT
-    PatternLayout:
-      pattern: "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n"
-
-loggers:
-  root:
-    level: INFO
-    AppenderRef:
-      - ref: Console
+logging:
+  config: classpath:log4j2.yaml
+  level:
+    org.hibernate.SQL: debug  # Hibernate SQL 로깅 레벨 설정
+    # org.hibernate.type: trace  # Hibernate type 로깅 레벨 설정
