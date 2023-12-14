@@ -26,7 +26,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFilterChain, HttpSecurity> {
 
-    private final String[] allowedUrls = { "/*" };
+//    private final String[] allowedUrls = { "/*", "/v3/api-docs/**", "/swagger-ui/**" };
+private final String[] allowedUrls = { "/**" };
     private final JwtAuthenticationEntryPoint jwtAuthenticationEntryPoint;
     private final TokenProvider tokenProvider;
     private final JwtAccessDeniedHandler jwtAccessDeniedHandler;
