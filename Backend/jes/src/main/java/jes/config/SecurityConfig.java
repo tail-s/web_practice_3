@@ -5,6 +5,7 @@ import jes.config.jwt.JwtAuthenticationEntryPoint;
 import jes.config.jwt.JwtFilter;
 import jes.config.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
+import org.apache.catalina.filters.CorsFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -52,9 +53,8 @@ public class SecurityConfig extends SecurityConfigurerAdapter<DefaultSecurityFil
                         .accessDeniedHandler(jwtAccessDeniedHandler)
                 )
                 .addFilterBefore(new JwtFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new CorsFilter(), JwtFilter.class)
                 .build();
     }
-
-
 
 }

@@ -1,0 +1,2 @@
+Log4j2 참조
+https://olkkani.github.io/spring/start-springboot-project/2-log4j2/

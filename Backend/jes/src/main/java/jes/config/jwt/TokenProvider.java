@@ -4,7 +4,6 @@ import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.extern.log4j.Log4j2;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,20 +11,19 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
 
 import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Date;
-import java.util.logging.LogManager;
-import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 @Log4j2
 @Component
 public class TokenProvider implements InitializingBean {
 
-    public static final Logger log = LogManager.getLogManager().getLogger();
     private static final String AUTHORITIES_KEY = "auth";
     private final String secret;
     private final long tokenValidityInMilliseconds;
@@ -71,10 +69,10 @@ public class TokenProvider implements InitializingBean {
                 .parseClaimsJws(token)
                 .getBody();
 
-        Collection<? extends GrantedAuthority> authorities = null;
-//                Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","));
-//                        .map(SimpleGrantedAuthority::new)
-//                        .collect(Collectors.toList());
+        Collection<? extends GrantedAuthority> authorities =
+                Arrays.stream(claims.get(AUTHORITIES_KEY).toString().split(","))
+                        .map(SimpleGrantedAuthority::new)
+                        .collect(Collectors.toList());
 
         User principal = new User(claims.getSubject(), "", authorities);
 

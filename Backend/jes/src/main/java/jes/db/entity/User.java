@@ -1,6 +1,8 @@
 package jes.db.entity;
 
 import jakarta.persistence.*;
+import jes.db.enums.Role;
+import jes.db.enums.Type;
 import lombok.*;
 
 @Entity
