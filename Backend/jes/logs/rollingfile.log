@@ -1,0 +1,118 @@
+[36m[DEBUG][m 2023-12-15 00:59:06.413 [http-nio-8080-Acceptor][DirectJDKLog.java] LimitLatch - Counting up[http-nio-8080-Acceptor] latch=6
+[36m[DEBUG][m 2023-12-15 00:59:06.414 [http-nio-8080-exec-10][DirectJDKLog.java] Http11NioProtocol - Processing socket [org.apache.tomcat.util.net.NioChannel@39af5c81:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50274]] with status [OPEN_READ]
+[36m[DEBUG][m 2023-12-15 00:59:06.418 [http-nio-8080-exec-10][DirectJDKLog.java] Http11NioProtocol - Found processor [null] for socket [org.apache.tomcat.util.net.NioChannel@39af5c81:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50274]]
+[36m[DEBUG][m 2023-12-15 00:59:06.418 [http-nio-8080-Acceptor][DirectJDKLog.java] LimitLatch - Counting up[http-nio-8080-Acceptor] latch=7
+[36m[DEBUG][m 2023-12-15 00:59:06.418 [http-nio-8080-exec-10][DirectJDKLog.java] Http11NioProtocol - Popped processor [org.apache.coyote.http11.Http11Processor@f6202ef] from cache
+[36m[DEBUG][m 2023-12-15 00:59:06.418 [http-nio-8080-exec-1][DirectJDKLog.java] Http11NioProtocol - Processing socket [org.apache.tomcat.util.net.NioChannel@74bdec29:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50275]] with status [OPEN_READ]
+[36m[DEBUG][m 2023-12-15 00:59:06.418 [http-nio-8080-exec-10][DirectJDKLog.java] Http11InputBuffer - Before fill(): parsingHeader: [true], parsingRequestLine: [true], parsingRequestLinePhase: [0], parsingRequestLineStart: [0], byteBuffer.position(): [0], byteBuffer.limit(): [0], end: [605]
+[36m[DEBUG][m 2023-12-15 00:59:06.418 [http-nio-8080-exec-1][DirectJDKLog.java] Http11NioProtocol - Found processor [null] for socket [org.apache.tomcat.util.net.NioChannel@74bdec29:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50275]]
+[36m[DEBUG][m 2023-12-15 00:59:06.419 [http-nio-8080-exec-10][DirectJDKLog.java] SocketWrapperBase - Socket: [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@3768b5c4:org.apache.tomcat.util.net.NioChannel@39af5c81:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50274]], Read from buffer: [0]
+[36m[DEBUG][m 2023-12-15 00:59:06.419 [http-nio-8080-exec-1][DirectJDKLog.java] Http11NioProtocol - Popped processor [org.apache.coyote.http11.Http11Processor@386a014] from cache
+[36m[DEBUG][m 2023-12-15 00:59:06.419 [http-nio-8080-exec-1][DirectJDKLog.java] Http11InputBuffer - Before fill(): parsingHeader: [true], parsingRequestLine: [true], parsingRequestLinePhase: [0], parsingRequestLineStart: [0], byteBuffer.position(): [0], byteBuffer.limit(): [0], end: [654]
+[36m[DEBUG][m 2023-12-15 00:59:06.419 [http-nio-8080-exec-1][DirectJDKLog.java] SocketWrapperBase - Socket: [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@1dcaf944:org.apache.tomcat.util.net.NioChannel@74bdec29:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50275]], Read from buffer: [0]
+[36m[DEBUG][m 2023-12-15 00:59:06.419 [http-nio-8080-exec-10][DirectJDKLog.java] Http11Processor - Error parsing HTTP request header
+java.io.EOFException: null
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.fillReadBuffer(NioEndpoint.java:1296) ~[tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.read(NioEndpoint.java:1184) ~[tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.http11.Http11InputBuffer.fill(Http11InputBuffer.java:785) ~[tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:348) ~[tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:264) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[36m[DEBUG][m 2023-12-15 00:59:06.419 [http-nio-8080-exec-1][DirectJDKLog.java] NioEndpoint - Socket: [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@1dcaf944:org.apache.tomcat.util.net.NioChannel@74bdec29:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50275]], Read direct from socket: [387]
+[36m[DEBUG][m 2023-12-15 00:59:06.420 [http-nio-8080-exec-1][DirectJDKLog.java] Http11InputBuffer - Received [GET /api/hello HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXIxIiwiaWF0IjoxNzAwOTQyNDk0LCJleHAiOjE3MDA5NDYwOTR9.P61HSA1Ic6fJ_SDC9U4nYKv9WXcEUp0qbunHdjXTDDk
+User-Agent: PostmanRuntime/7.35.0
+Accept: */*
+Postman-Token: 35eb9419-5537-4d0e-a428-d851b38f03c0
+Host: localhost:8080
+Accept-Encoding: gzip, deflate, br
+Connection: keep-alive
+
+]
+[36m[DEBUG][m 2023-12-15 00:59:06.420 [http-nio-8080-exec-10][DirectJDKLog.java] Http11Processor - Error state [CLOSE_CONNECTION_NOW] reported while processing request
+java.io.EOFException: null
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.fillReadBuffer(NioEndpoint.java:1296) ~[tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper.read(NioEndpoint.java:1184) ~[tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.http11.Http11InputBuffer.fill(Http11InputBuffer.java:785) ~[tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.http11.Http11InputBuffer.parseRequestLine(Http11InputBuffer.java:348) ~[tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:264) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:894) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1740) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) [tomcat-embed-core-10.1.11.jar:10.1.11]
+	at java.lang.Thread.run(Thread.java:833) [?:?]
+[36m[DEBUG][m 2023-12-15 00:59:06.420 [http-nio-8080-exec-10][DirectJDKLog.java] Http11Processor - Socket: [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@3768b5c4:org.apache.tomcat.util.net.NioChannel@39af5c81:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50274]], Status in: [OPEN_READ], State out: [CLOSED]
+[36m[DEBUG][m 2023-12-15 00:59:06.420 [http-nio-8080-exec-10][DirectJDKLog.java] Http11NioProtocol - Pushed Processor [org.apache.coyote.http11.Http11Processor@f6202ef]
+[36m[DEBUG][m 2023-12-15 00:59:06.420 [http-nio-8080-exec-1][DirectJDKLog.java] AuthenticatorBase - Security checking request GET /api/hello
+[36m[DEBUG][m 2023-12-15 00:59:06.420 [http-nio-8080-exec-1][DirectJDKLog.java] RealmBase -   No applicable constraints defined
+[36m[DEBUG][m 2023-12-15 00:59:06.421 [http-nio-8080-exec-1][DirectJDKLog.java] AuthenticatorBase - Not subject to any constraint
+[36m[DEBUG][m 2023-12-15 00:59:06.421 [http-nio-8080-exec-10][DirectJDKLog.java] LimitLatch - Counting down[http-nio-8080-exec-10] latch=7
+[36m[DEBUG][m 2023-12-15 00:59:06.421 [http-nio-8080-exec-1][FilterChainProxy.java] FilterChainProxy - Securing GET /hello
+[36m[DEBUG][m 2023-12-15 00:59:06.421 [http-nio-8080-exec-10][DirectJDKLog.java] NioEndpoint - Calling [org.apache.tomcat.util.net.NioEndpoint@7655bfff].closeSocket([org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@3768b5c4:org.apache.tomcat.util.net.NioChannel@39af5c81:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50274]])
+[32m[INFO ][m 2023-12-15 00:59:06.446 [http-nio-8080-exec-1][TokenProvider.java] TokenProvider - 잘못된 JWT 서명입니다.
+[36m[DEBUG][m 2023-12-15 00:59:06.447 [http-nio-8080-exec-1][JwtFilter.java] JwtFilter - 유효한 JWT 토큰이 없습니다, uri: /api/hello
+[36m[DEBUG][m 2023-12-15 00:59:06.447 [http-nio-8080-exec-1][AnonymousAuthenticationFilter.java] AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+[36m[DEBUG][m 2023-12-15 00:59:06.447 [http-nio-8080-exec-1][AbstractHandlerMapping.java] RequestMappingHandlerMapping - Mapped to jes.api.controller.HelloController#hello()
+[36m[DEBUG][m 2023-12-15 00:59:06.447 [http-nio-8080-exec-1][FilterChainProxy.java] FilterChainProxy - Secured GET /hello
+[32m[INFO ][m 2023-12-15 00:59:06.448 [http-nio-8080-exec-1][TokenProvider.java] TokenProvider - 잘못된 JWT 서명입니다.
+[36m[DEBUG][m 2023-12-15 00:59:06.448 [http-nio-8080-exec-1][JwtFilter.java] JwtFilter - 유효한 JWT 토큰이 없습니다, uri: /api/hello
+[36m[DEBUG][m 2023-12-15 00:59:06.448 [http-nio-8080-exec-1][DirectJDKLog.java] Parameters - Set encoding to UTF-8
+[36m[DEBUG][m 2023-12-15 00:59:06.449 [http-nio-8080-exec-1][LogFormatUtils.java] DispatcherServlet - GET "/api/hello", parameters={}
+[36m[DEBUG][m 2023-12-15 00:59:06.449 [http-nio-8080-exec-1][AbstractHandlerMapping.java] RequestMappingHandlerMapping - Mapped to jes.api.controller.HelloController#hello()
+[36m[DEBUG][m 2023-12-15 00:59:06.449 [http-nio-8080-exec-1][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Opening JPA EntityManager in OpenEntityManagerInViewInterceptor
+[32m[INFO ][m 2023-12-15 00:59:06.449 [http-nio-8080-exec-1][HelloController.java] HelloController - Hello Controller Passed
+[36m[DEBUG][m 2023-12-15 00:59:06.451 [http-nio-8080-exec-1][AbstractMessageConverterMethodProcessor.java] HttpEntityMethodProcessor - Using 'text/plain', given [*/*] and supported [text/plain, */*, application/json, application/*+json]
+[36m[DEBUG][m 2023-12-15 00:59:06.451 [http-nio-8080-exec-1][LogFormatUtils.java] HttpEntityMethodProcessor - Writing ["히히 이제 시작이야..."]
+[36m[DEBUG][m 2023-12-15 00:59:06.452 [http-nio-8080-exec-1][OpenEntityManagerInViewInterceptor.java] OpenEntityManagerInViewInterceptor - Closing JPA EntityManager in OpenEntityManagerInViewInterceptor
+[36m[DEBUG][m 2023-12-15 00:59:06.452 [http-nio-8080-exec-1][FrameworkServlet.java] DispatcherServlet - Completed 200 OK
+[36m[DEBUG][m 2023-12-15 00:59:06.452 [http-nio-8080-exec-1][DirectJDKLog.java] Http11InputBuffer - Before fill(): parsingHeader: [true], parsingRequestLine: [true], parsingRequestLinePhase: [0], parsingRequestLineStart: [0], byteBuffer.position(): [0], byteBuffer.limit(): [0], end: [387]
+[36m[DEBUG][m 2023-12-15 00:59:06.453 [http-nio-8080-exec-1][DirectJDKLog.java] SocketWrapperBase - Socket: [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@1dcaf944:org.apache.tomcat.util.net.NioChannel@74bdec29:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50275]], Read from buffer: [0]
+[36m[DEBUG][m 2023-12-15 00:59:06.453 [http-nio-8080-exec-1][DirectJDKLog.java] NioEndpoint - Socket: [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@1dcaf944:org.apache.tomcat.util.net.NioChannel@74bdec29:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50275]], Read direct from socket: [0]
+[36m[DEBUG][m 2023-12-15 00:59:06.453 [http-nio-8080-exec-1][DirectJDKLog.java] Http11InputBuffer - Received []
+[36m[DEBUG][m 2023-12-15 00:59:06.453 [http-nio-8080-exec-1][DirectJDKLog.java] Http11Processor - Socket: [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@1dcaf944:org.apache.tomcat.util.net.NioChannel@74bdec29:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50275]], Status in: [OPEN_READ], State out: [OPEN]
+[36m[DEBUG][m 2023-12-15 00:59:06.453 [http-nio-8080-exec-1][DirectJDKLog.java] Http11NioProtocol - Pushed Processor [org.apache.coyote.http11.Http11Processor@386a014]
+[36m[DEBUG][m 2023-12-15 00:59:06.453 [http-nio-8080-exec-1][DirectJDKLog.java] NioEndpoint - Registered read interest for [org.apache.tomcat.util.net.NioEndpoint$NioSocketWrapper@1dcaf944:org.apache.tomcat.util.net.NioChannel@74bdec29:java.nio.channels.SocketChannel[connected local=/[0:0:0:0:0:0:0:1]:8080 remote=/[0:0:0:0:0:0:0:1]:50275]]
+[36m[DEBUG][m 2023-12-15 00:59:14.946 [SpringApplicationShutdownHook][ApplicationAvailabilityBean.java] ApplicationAvailabilityBean - Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+[36m[DEBUG][m 2023-12-15 00:59:14.947 [SpringApplicationShutdownHook][AbstractApplicationContext.java] AnnotationConfigServletWebServerApplicationContext - Closing org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@2842a251, started on Fri Dec 15 00:57:52 KST 2023
+[36m[DEBUG][m 2023-12-15 00:59:14.948 [SpringApplicationShutdownHook][DefaultLifecycleProcessor.java] DefaultLifecycleProcessor - Stopping beans in phase 2147482623
+[36m[DEBUG][m 2023-12-15 00:59:14.949 [SpringApplicationShutdownHook][DefaultLifecycleProcessor.java] DefaultLifecycleProcessor - Bean 'webServerGracefulShutdown' completed its stop procedure
+[36m[DEBUG][m 2023-12-15 00:59:14.949 [SpringApplicationShutdownHook][DefaultLifecycleProcessor.java] DefaultLifecycleProcessor - Stopping beans in phase 2147481599
+[36m[DEBUG][m 2023-12-15 00:59:14.955 [SpringApplicationShutdownHook][DefaultLifecycleProcessor.java] DefaultLifecycleProcessor - Bean 'webServerStartStop' completed its stop procedure
+[36m[DEBUG][m 2023-12-15 00:59:14.955 [SpringApplicationShutdownHook][DefaultLifecycleProcessor.java] DefaultLifecycleProcessor - Stopping beans in phase -2147483647
+[36m[DEBUG][m 2023-12-15 00:59:14.955 [SpringApplicationShutdownHook][DefaultLifecycleProcessor.java] DefaultLifecycleProcessor - Bean 'springBootLoggingLifecycle' completed its stop procedure
+[36m[DEBUG][m 2023-12-15 00:59:14.956 [SpringApplicationShutdownHook][RedisMessageListenerContainer.java] RedisMessageListenerContainer - Stopped RedisMessageListenerContainer
+[36m[DEBUG][m 2023-12-15 00:59:14.957 [SpringApplicationShutdownHook][AbstractRedisClient.java] AbstractRedisClient - Initiate shutdown (100, 100, MILLISECONDS)
+[36m[DEBUG][m 2023-12-15 00:59:14.961 [SpringApplicationShutdownHook][DefaultClientResources.java] DefaultClientResources - Initiate shutdown (0, 2, SECONDS)
+[36m[DEBUG][m 2023-12-15 00:59:14.962 [SpringApplicationShutdownHook][DefaultEventLoopGroupProvider.java] DefaultEventLoopGroupProvider - Initiate shutdown (0, 2, SECONDS)
+[36m[DEBUG][m 2023-12-15 00:59:14.964 [SpringApplicationShutdownHook][MBeanExporter.java] AnnotationMBeanExporter - Unregistering JMX-exposed beans on shutdown
+[36m[DEBUG][m 2023-12-15 00:59:14.964 [SpringApplicationShutdownHook][MBeanRegistrationSupport.java] AnnotationMBeanExporter - Unregistering JMX-exposed beans
+[36m[DEBUG][m 2023-12-15 00:59:14.964 [SpringApplicationShutdownHook][ExecutorConfigurationSupport.java] ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor'
+[32m[INFO ][m 2023-12-15 00:59:14.965 [SpringApplicationShutdownHook][AbstractEntityManagerFactoryBean.java] LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+[36m[DEBUG][m 2023-12-15 00:59:14.965 [SpringApplicationShutdownHook][SessionFactoryImpl.java] SessionFactoryImpl - HHH000031: Closing
+[36m[DEBUG][m 2023-12-15 00:59:14.965 [SpringApplicationShutdownHook][TypeConfiguration.java] TypeConfiguration$Scope - Un-scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration$Scope@1ed454ca] from SessionFactory [org.hibernate.internal.SessionFactoryImpl@6b9e4950]
+[36m[DEBUG][m 2023-12-15 00:59:14.965 [SpringApplicationShutdownHook][AbstractServiceRegistryImpl.java] AbstractServiceRegistryImpl - Implicitly destroying ServiceRegistry on de-registration of all child ServiceRegistries
+[36m[DEBUG][m 2023-12-15 00:59:14.966 [SpringApplicationShutdownHook][BootstrapServiceRegistryImpl.java] BootstrapServiceRegistryImpl - Implicitly destroying Boot-strap registry on de-registration of all child ServiceRegistries
+[32m[INFO ][m 2023-12-15 00:59:14.967 [SpringApplicationShutdownHook][HikariDataSource.java] HikariDataSource - HikariPool-1 - Shutdown initiated...
+[36m[DEBUG][m 2023-12-15 00:59:14.967 [SpringApplicationShutdownHook][HikariPool.java] HikariPool - HikariPool-1 - Before shutdown stats (total=10, active=0, idle=10, waiting=0)
+[36m[DEBUG][m 2023-12-15 00:59:14.967 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@427250fd: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.968 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@6c42651c: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.968 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@c6d9a53: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.968 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@5869bf2a: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.968 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@823629f: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.969 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@38433b1f: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.969 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@250337dd: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.969 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@5e929779: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.969 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@69a5c3f7: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.970 [HikariPool-1 connection closer][PoolBase.java] PoolBase - HikariPool-1 - Closing connection com.mysql.cj.jdbc.ConnectionImpl@67d381f8: (connection evicted)
+[36m[DEBUG][m 2023-12-15 00:59:14.970 [SpringApplicationShutdownHook][HikariPool.java] HikariPool - HikariPool-1 - After shutdown stats (total=0, active=0, idle=0, waiting=0)
+[32m[INFO ][m 2023-12-15 00:59:14.970 [SpringApplicationShutdownHook][HikariDataSource.java] HikariDataSource - HikariPool-1 - Shutdown completed.
